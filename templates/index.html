@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSV File Upload</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.plot.ly/plotly.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #00703c; 
+        }
+        
+        form {
+            text-align: center;
+        }
+
+        form div {
+            margin-bottom: 10px;
+        }
+
+        img {
+            max-width: 17%;
+            height: auto;
+        }
+
+        .input-box {
+            background-color: #a7a177;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .input-box input[type="file"] {
+            margin-bottom: 20px; 
+        }
+    </style>
+</head>
+<body>
+    <form method="POST" enctype="multipart/form-data" action="/upload">
+        <div>
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo">
+            <h1>Upload a Flight Data File</h1>
+        </div>
+        <div class="input-box">
+            <input type="file" name="file">
+            <div>
+                <label for="compare">Compare</label>
+                <input type="checkbox" name="compare" id="compare">
+            </div>
+            <div>
+                <label for="plot_gforce">G-Force</label>
+                <input type="checkbox" name="plot_gforce" id="plot_gforce">
+                <input type="color" name="color_gforce" id="color_gforce" value="#ff0000">  <!-- Added color picker -->
+            </div>
+            <div>
+                <label for="plot_velocity">Velocity</label>
+                <input type="checkbox" name="plot_velocity" id="plot_velocity">
+                <input type="color" name="color_velocity" id="color_velocity" value="#00ff00">  <!-- Added color picker -->
+            </div>
+            <div>
+                <label for="plot_altitude">Altitude</label>
+                <input type="checkbox" name="plot_altitude" id="plot_altitude">
+                <input type="color" name="color_altitude" id="color_altitude" value="#0000ff">  <!-- Added color picker -->
+            </div>
+            <div>
+                <label for="plot_lin_acceleration">Linear Acceleration</label>
+                <input type="checkbox" name="plot_lin_acceleration" id="plot_lin_acceleration">
+                <input type="color" name="color_lin_acceleration" id="color_lin_acceleration" value="#ffa500">  <!-- Default to orange -->
+            </div>
+            <div>
+                <label for="plot_acceleration">Acceleration</label>
+                <input type="checkbox" name="plot_acceleration" id="plot_acceleration">
+                <input type="color" name="color_acceleration" id="color_acceleration" value="#FC0FC0">  <!-- Default to orange -->
+            </div>
+            <!--<div>
+                <label for="plot_radial_gforce">Plot Radial G-Force</label>
+                <input type="checkbox" name="plot_radial_gforce" id="plot_altitude">
+            </div>-->
+            <input type="submit" value="Upload">
+        </div>
+    </form>
+    <div id="plot_div">
+        <!-- Plot will be inserted here -->
+    </div>
+</body>
+</html>
