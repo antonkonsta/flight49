@@ -207,7 +207,7 @@ def plot_data():
 
             if plot_velocity == 'True':
                 trace = px.line(df, x='seconds', y='velocity').data[0]
-                trace.line.color = color_velocity  # Modify the trace color here
+                trace.line.color = color_velocity  # Modify the trace color herekuyiuyiuy
                 fig.add_trace(trace)
 
             if plot_altitude == 'True':
