@@ -6,6 +6,8 @@ import plotly.express as px
 
 app = Flask(__name__)
 
+app.config['MAX_CONTENT_LENGTH'] = 100 * 1024 * 1024  # 50 MB in bytes
+
 # Initialize global variables
 payload_mass = None
 df = None
